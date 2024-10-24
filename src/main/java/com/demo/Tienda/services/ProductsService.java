@@ -14,11 +14,12 @@ public class ProductsService {
 
     public ProductsService() {
         products = new ArrayList<>();
-        products.add(new ProductsEntity(UUID.randomUUID(), "Laptop", 3500000));
-        products.add(new ProductsEntity(UUID.randomUUID(), "Smartphone", 1200000));
-        products.add(new ProductsEntity(UUID.randomUUID(), "Tablet", 850000));
-        products.add(new ProductsEntity(UUID.randomUUID(), "Smartwatch", 600000));
-        products.add(new ProductsEntity(UUID.randomUUID(), "Monitor", 950000));
+        UUID warrantyId = UUID.randomUUID();
+        products.add(new ProductsEntity(UUID.randomUUID(), "Laptop", 3500000, warrantyId));
+        products.add(new ProductsEntity(UUID.randomUUID(), "Smartphone", 1200000, warrantyId));
+        products.add(new ProductsEntity(UUID.randomUUID(), "Tablet", 850000, warrantyId));
+        products.add(new ProductsEntity(UUID.randomUUID(), "Smartwatch", 600000, warrantyId));
+        products.add(new ProductsEntity(UUID.randomUUID(), "Monitor", 950000, warrantyId));
     }
 
     public List<ProductsEntity> getAllProducts() {
@@ -40,6 +41,7 @@ public class ProductsService {
         existingProduct.ifPresent(product -> {
             product.setNombre(updateProduct.getNombre());
             product.setPrecio(updateProduct.getPrecio());
+            product.setWarrantyId(updateProduct.getWarrantyId());
         });
         return existingProduct;
     }

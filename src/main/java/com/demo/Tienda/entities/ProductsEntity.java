@@ -15,4 +15,5 @@ public class ProductsEntity {
     private UUID id; //Identificador unico de cada producto
     private String nombre; //Atributo que representa el nombre de un producto
     private double precio; //Atributo que representa el valor de un producto
+    private UUID warrantyId; //Identificador de la garantia
 }

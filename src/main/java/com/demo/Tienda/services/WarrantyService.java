@@ -3,7 +3,6 @@ package com.demo.Tienda.services;
 import com.demo.Tienda.entities.WarrantyEntity;
 import org.springframework.stereotype.Service;
 
-import java.lang.classfile.Opcode;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +27,12 @@ public class WarrantyService {
         return warranties.stream().filter(w -> w.getId().equals(id)).findFirst();
     }
 
+    public Optional<WarrantyEntity> getWarrantyByProductId(UUID productId) {
+        return warranties.stream()
+                .filter(warranty -> warranty.getId().equals(productId))
+                .findFirst();
+    }
+
     public UUID createWarranty(WarrantyEntity warranty) {
         WarrantyEntity newWarranty = new WarrantyEntity(UUID.randomUUID(), warranty.getFechaInicio(), warranty.getFechaFin());
         warranties.add(newWarranty);
@@ -44,6 +49,7 @@ public class WarrantyService {
     }
 
     public boolean deleteWarranty(UUID id) {
+
         return warranties.removeIf(w -> w.getId().equals(id));
     }
 }
