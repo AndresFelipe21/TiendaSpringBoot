@@ -27,9 +27,22 @@ public class CustomerService {
     }
 
     public UUID createCustomer(CustomerEntity customer) {
-        customers.setId(UUID.randomUUID());
-        customers.add(customer);
-        return customer.getId();
+        CustomerEntity newCustomer = new CustomerEntity(UUID.randomUUID(), customer.getNombre(), customer.getEmail());
+        customers.add(newCustomer);
+        return newCustomer.getId();
+    }
+
+    public Optional<CustomerEntity> updateCustomer(UUID id, CustomerEntity updateCustomer) {
+        Optional<CustomerEntity> existingCustomer = getCustomerById(id);
+        existingCustomer.ifPresent(customer -> {
+            customer.setNombre(updateCustomer.getNombre());
+            customer.setEmail(updateCustomer.getEmail());
+        });
+        return existingCustomer;
+    }
+
+    public boolean deleteCustomer(UUID id) {
+        return customers.removeIf(customer -> customer.getId().equals(id));
     }
 
 
