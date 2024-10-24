@@ -1,14 +1,15 @@
 package com.demo.Tienda.entities;
 
-//Importacion de librerias necesarias
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.UUID;
 
-@Data // Me genera los metodos Getter and Setter automaticamente
-@NoArgsConstructor // Me genera constructor sin argumentos
-@AllArgsConstructor // Me genera constructor con todos los parametros de la clase
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 
 //Declaracion de la clase que representa la entidad de un cliente
 public class CustomerEntity {
